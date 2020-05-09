@@ -16,7 +16,6 @@ namespace Proyecto_Sebet.Models
         }
 
         public virtual DbSet<Answer> Answer { get; set; }
-        public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<Career> Career { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Graduate> Graduate { get; set; }
@@ -24,7 +23,6 @@ namespace Proyecto_Sebet.Models
         public virtual DbSet<Job> Job { get; set; }
         public virtual DbSet<LegalForm> LegalForm { get; set; }
         public virtual DbSet<Question> Question { get; set; }
-        public virtual DbSet<SchoolLevel> SchoolLevel { get; set; }
         public virtual DbSet<Test> Test { get; set; }
         public virtual DbSet<TestReview> TestReview { get; set; }
 
@@ -48,24 +46,7 @@ namespace Proyecto_Sebet.Models
                 entity.HasOne(d => d.IdGraduateNavigation)
                     .WithMany(p => p.Answer)
                     .HasForeignKey(d => d.IdGraduate)
-                    .HasConstraintName("FK__Answer__IdGradua__5BE2A6F2");
-            });
-
-            modelBuilder.Entity<Area>(entity =>
-            {
-                entity.HasKey(e => e.IdArea);
-
-                entity.HasIndex(e => e.NameArea)
-                    .HasName("UQ__Area__B2DFBAF0C3152416")
-                    .IsUnique();
-
-                entity.Property(e => e.DescriptionArea)
-                    .IsRequired()
-                    .HasMaxLength(150);
-
-                entity.Property(e => e.NameArea)
-                    .IsRequired()
-                    .HasMaxLength(150);
+                    .HasConstraintName("FK__Answer__IdGradua__52593CB8");
             });
 
             modelBuilder.Entity<Career>(entity =>
@@ -73,7 +54,7 @@ namespace Proyecto_Sebet.Models
                 entity.HasKey(e => e.IdCareer);
 
                 entity.HasIndex(e => e.NameCareer)
-                    .HasName("UQ__Career__320EAB4365ABDA2E")
+                    .HasName("UQ__Career__320EAB435E758A8D")
                     .IsUnique();
 
                 entity.Property(e => e.DescriptionCareer)
@@ -83,18 +64,6 @@ namespace Proyecto_Sebet.Models
                 entity.Property(e => e.NameCareer)
                     .IsRequired()
                     .HasMaxLength(150);
-
-                entity.HasOne(d => d.IdAreaNavigation)
-                    .WithMany(p => p.Career)
-                    .HasForeignKey(d => d.IdArea)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Career__IdArea__3F466844");
-
-                entity.HasOne(d => d.IdSchoolLevelNavigation)
-                    .WithMany(p => p.Career)
-                    .HasForeignKey(d => d.IdSchoolLevel)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Career__IdSchool__3E52440B");
             });
 
             modelBuilder.Entity<Company>(entity =>
@@ -102,15 +71,15 @@ namespace Proyecto_Sebet.Models
                 entity.HasKey(e => e.IdCompany);
 
                 entity.HasIndex(e => e.BusinessName)
-                    .HasName("UQ__Company__95A8740EE8E0A238")
+                    .HasName("UQ__Company__95A8740EB1F8DD24")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Company__A9D10534DB903CA8")
+                    .HasName("UQ__Company__A9D1053467BEA197")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Rfc)
-                    .HasName("UQ__Company__CAFFA85EB30909BC")
+                    .HasName("UQ__Company__CAFFA85EA63D62E2")
                     .IsUnique();
 
                 entity.Property(e => e.BusinessName)
@@ -142,13 +111,13 @@ namespace Proyecto_Sebet.Models
                     .WithMany(p => p.Company)
                     .HasForeignKey(d => d.IdIndustry)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Company__IdLegal__4F7CD00D");
+                    .HasConstraintName("FK__Company__IdLegal__45F365D3");
 
                 entity.HasOne(d => d.IdLegalFormNavigation)
                     .WithMany(p => p.Company)
                     .HasForeignKey(d => d.IdLegalForm)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Company__IdLegal__5070F446");
+                    .HasConstraintName("FK__Company__IdLegal__46E78A0C");
             });
 
             modelBuilder.Entity<Graduate>(entity =>
@@ -156,11 +125,11 @@ namespace Proyecto_Sebet.Models
                 entity.HasKey(e => e.IdGraduate);
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Graduate__A9D10534965CF1B7")
+                    .HasName("UQ__Graduate__A9D105342713DF02")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Inscription)
-                    .HasName("UQ__Graduate__3C48DFEAB25EB528")
+                    .HasName("UQ__Graduate__3C48DFEAD345AB8E")
                     .IsUnique();
 
                 entity.Property(e => e.Email)
@@ -179,23 +148,11 @@ namespace Proyecto_Sebet.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.HasOne(d => d.IdAreaNavigation)
-                    .WithMany(p => p.Graduate)
-                    .HasForeignKey(d => d.IdArea)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Graduate__IdArea__44FF419A");
-
                 entity.HasOne(d => d.IdCareerNavigation)
                     .WithMany(p => p.Graduate)
                     .HasForeignKey(d => d.IdCareer)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Graduate__IdScho__440B1D61");
-
-                entity.HasOne(d => d.IdSchoolLevelNavigation)
-                    .WithMany(p => p.Graduate)
-                    .HasForeignKey(d => d.IdSchoolLevel)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Graduate__IdScho__45F365D3");
+                    .HasConstraintName("FK__Graduate__IdCare__3C69FB99");
             });
 
             modelBuilder.Entity<Industry>(entity =>
@@ -225,7 +182,7 @@ namespace Proyecto_Sebet.Models
                     .WithMany(p => p.Job)
                     .HasForeignKey(d => d.IdCompany)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Job__idCompany__534D60F1");
+                    .HasConstraintName("FK__Job__idCompany__49C3F6B7");
             });
 
             modelBuilder.Entity<LegalForm>(entity =>
@@ -249,24 +206,7 @@ namespace Proyecto_Sebet.Models
                     .WithMany(p => p.Question)
                     .HasForeignKey(d => d.IdTest)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Question__Questi__59063A47");
-            });
-
-            modelBuilder.Entity<SchoolLevel>(entity =>
-            {
-                entity.HasKey(e => e.IdSchoolLevel);
-
-                entity.HasIndex(e => e.NameLevel)
-                    .HasName("UQ__SchoolLe__EC3D67B31B584D29")
-                    .IsUnique();
-
-                entity.Property(e => e.DescriptionLevel)
-                    .IsRequired()
-                    .HasMaxLength(150);
-
-                entity.Property(e => e.NameLevel)
-                    .IsRequired()
-                    .HasMaxLength(150);
+                    .HasConstraintName("FK__Question__Questi__4F7CD00D");
             });
 
             modelBuilder.Entity<Test>(entity =>
@@ -283,7 +223,7 @@ namespace Proyecto_Sebet.Models
                     .WithMany(p => p.Test)
                     .HasForeignKey(d => d.IdCompany)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Test__Total_Ques__5629CD9C");
+                    .HasConstraintName("FK__Test__Total_Ques__4CA06362");
             });
 
             modelBuilder.Entity<TestReview>(entity =>
@@ -295,12 +235,12 @@ namespace Proyecto_Sebet.Models
                 entity.HasOne(d => d.IdAnswerNavigation)
                     .WithMany(p => p.TestReview)
                     .HasForeignKey(d => d.IdAnswer)
-                    .HasConstraintName("FK__TestRevie__IdAns__5FB337D6");
+                    .HasConstraintName("FK__TestRevie__IdAns__5629CD9C");
 
                 entity.HasOne(d => d.IdQuestionNavigation)
                     .WithMany(p => p.TestReview)
                     .HasForeignKey(d => d.IdQuestion)
-                    .HasConstraintName("FK__TestRevie__Score__5EBF139D");
+                    .HasConstraintName("FK__TestRevie__Score__5535A963");
             });
         }
     }
