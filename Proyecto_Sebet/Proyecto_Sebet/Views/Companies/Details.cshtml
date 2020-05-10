@@ -1,0 +1,66 @@
+﻿@model Proyecto_Sebet.Models.Company
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecluiterName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecluiterName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rfc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rfc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BusinessName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordR)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PasswordR)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdIndustryNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdIndustryNavigation.IndustryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdLegalFormNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdLegalFormNavigation.FormName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCompany">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
