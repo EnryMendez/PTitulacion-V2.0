@@ -22,9 +22,8 @@ namespace Proyecto_Sebet.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Registry()
         {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }

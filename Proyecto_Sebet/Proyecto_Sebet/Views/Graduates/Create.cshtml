@@ -4,50 +4,45 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Crear Nueva Cuenta</h2>
 
-<h4>Graduate</h4>
+<h4>Para Egresado</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Inscription" class="control-label"></label>
-                <input asp-for="Inscription" class="form-control" />
-                <span asp-validation-for="Inscription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GraduateName" class="control-label"></label>
-                <input asp-for="GraduateName" class="form-control" />
-                <span asp-validation-for="GraduateName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PasswordG" class="control-label"></label>
-                <input asp-for="PasswordG" class="form-control" />
-                <span asp-validation-for="PasswordG" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdCareer" class="control-label"></label>
-                <select asp-for="IdCareer" class ="form-control" asp-items="ViewBag.IdCareer"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <form asp-action="Create" method="post">
+            <div class="row" >
+                <div class="col-sm-12 col-md-6 ">
+                    <div class="form-group">
+                        <input asp-for="Inscription" class="form-control" placeholder="Número de Boleta" required autofocus />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="GraduateName" class="form-control" placeholder="Nombre(s)" required />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="LastName" class="form-control" placeholder="Apellidos" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Selecciona tu carrera: </label>
+                        <select asp-for="IdCareer" class="form-control" asp-items="ViewBag.IdCareer"></select>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Email" class="form-control" placeholder="Correo Elecronico" required />
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="PasswordG" class="form-control" placeholder="Contraseña" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="ComfirmPass" placeholder="Confirmar Contraseña" required class="form-control" />
+                    </div>
+                    <br />
+                    <div class="form-group text-right">
+                        <input type="submit" value="Create" class="btn btn-default btn-primary" />
+                    </div>
+                </div>
             </div>
         </form>
-    </div>
-</div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
